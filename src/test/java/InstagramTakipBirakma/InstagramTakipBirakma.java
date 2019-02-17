@@ -1,10 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package InstagramTakipBirakma;
 
+/**
+ *
+ * @author furkan
+ * 
+ * Instagram'da ilk olarak giriş yapıyor.
+ * Sonrasında profil sayfasında takip edilenler ekranına gidip
+ * takip edilenleri açıyor ve takip bırak butonlarına tıklıyor.
+ * Instagram bir süre sonra tıklananları saymıyor.
+ */
 
 import static java.lang.Thread.sleep;
 import org.junit.After;
@@ -31,8 +36,7 @@ public class InstagramTakipBirakma {
         System.setProperty("webdriver.gecko.driver", driverPath);
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability("marionette", true);
-        driver = new FirefoxDriver(capabilities);
-        
+        driver = new FirefoxDriver(capabilities);        
 
     }
 
@@ -50,7 +54,7 @@ public class InstagramTakipBirakma {
     
     public void girisYap(){
         driver.findElement(By.xpath(".//span[@id='react-root']/section/main/article/div[2]/div[2]/p/a")).click();
-        //[@id='react-root']/section/main/article/div[2]/div[2]/p/a
+
     }
     
     public void kullaniciBilgileriDoldur(){
