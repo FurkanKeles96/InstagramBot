@@ -8,7 +8,7 @@ package InstagramTakipEtme;
  * Instagram'da ilk olarak kullanıcı adı ve şifre verilerek giriş yapılması sağlanıyor.
  * Sonrasında istenilen sayfa adına göre arama yapılıp ilk sonuca tıklanıyor.
  * O sayfadaki takipçiler ekranına gidip teker teker takip et butonlarına tıklıyor.
- * 
+ * Bir süre sonunda Instagram engel uyguladığı için takip edilenler sayılmıyor.
  */
 
 import static java.lang.Thread.sleep;
@@ -54,7 +54,6 @@ public class InstagramTakipEtme {
     
     public void girisYap(){
         driver.findElement(By.xpath(".//span[@id='react-root']/section/main/article/div[2]/div[2]/p/a")).click();
-        //[@id='react-root']/section/main/article/div[2]/div[2]/p/a
     }
     
     public void kullaniciBilgileriDoldur(){
