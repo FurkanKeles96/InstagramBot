@@ -1,0 +1,8 @@
+#surefire
+#Tue Feb 05 19:18:57 EET 2019
+maven.ext.class.path=C\:\\Program Files\\NetBeans 8.2\\java\\maven-nblib\\netbeans-eventspy.jar
+user.dir=C\:\\Users\\furkan\\Documents\\NetBeansProjects\\InstagramBot
+file.encoding=UTF-8
+localRepository=C\:\\Users\\furkan\\.m2\\repository
+basedir=C\:\\Users\\furkan\\Documents\\NetBeansProjects\\InstagramBot
+test=InstagramTakipBirakma.InstagramTakipBirakma
