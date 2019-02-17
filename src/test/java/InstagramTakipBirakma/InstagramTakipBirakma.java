@@ -24,7 +24,7 @@ public class InstagramTakipBirakma {
     
     String driverPath = "C:\\Users\\furkan\\Desktop\\geckodriver-v0.24.0-win64\\geckodriver.exe";
     public WebDriver driver;
-    
+    JavascriptExecutor js = (JavascriptExecutor) driver;
 
     @Before
     public void startBrowser() {
@@ -32,6 +32,7 @@ public class InstagramTakipBirakma {
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability("marionette", true);
         driver = new FirefoxDriver(capabilities);
+        
 
     }
 
@@ -54,26 +55,55 @@ public class InstagramTakipBirakma {
     
     public void kullaniciBilgileriDoldur(){
         
-        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div/div/div/input")).sendKeys("seleniumbotdeneme");
-        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div[2]/div/div/input")).sendKeys("selenium123.");
+        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div/div/div/input")).sendKeys("[UserName]");
+        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div[2]/div/div/input")).sendKeys("[Password]");
         driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div[3]/button")).click();
         
     }
     
     public void takipBirak() throws InterruptedException{
-        driver.get("https://www.instagram.com/seleniumbotdeneme");
         
-        driver.findElement(By.xpath("//span[@id='react-root']/section/main/div/header/section/ul/li[3]/a")).click(); //Takip edilenleri açıyor.
-        Thread.sleep(5000);
-        
-        
-        for(int i = 7; i<15; i++){
-            driver.findElement(By.xpath("(//button[@type='button'])["+i+"]")).click();  //(//button[@type='button'])[7]
-            Thread.sleep(5000);
-            //driver.findElement(By.xpath("//div[4]/div/div/div/div[3]/button")).click();
-            driver.findElement(By.cssSelector("button.aOOlW.-Cab_   ")).click();
-            Thread.sleep(5000);
+        takipEdilenleriAc();
+        Thread.sleep(500);
+        for(int i = 7; i<4410; i++){
+            /*if(i==12){
+                driver.navigate().refresh();
+                takipEdilenleriAc();
+                i=7;
+                Thread.sleep(5000);
+                //takipEdilenleriAc();
+            }*/
+            //else{
+                driver.findElement(By.xpath("(//button[@type='button'])["+i+"]")).click();  //(//button[@type='button'])[7]
+                Thread.sleep(3000);
+                //driver.findElement(By.xpath("//div[4]/div/div/div/div[3]/button")).click();
+                driver.findElement(By.cssSelector("button.aOOlW.-Cab_   ")).click();
+                Thread.sleep(3000);
+                
+                /*//Find element by link text and store in variable "Element"        		
+                WebElement Element = driver.findElement(By.cssSelector("button.aOOlW.-Cab_   "));
+                
+
+                //This will scroll the page till the element is found		
+                js.executeScript("arguments[0].scrollIntoView();", Element);*/
+                
+                //js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                
+                //js.executeScript("arguments[0].scrollTop = arguments[1];",driver.findElement(By.xpath("//div[3]/div/div/div[2]")), 100);
+            //}
+            
         }
+    }
+    
+    public void takipEdilenleriAc() throws InterruptedException{
+        //driver.get("https://www.instagram.com/wallhero");
+        
+        driver.findElement(By.xpath("//span[@id='react-root']/section/nav/div[2]/div/div/div[3]/div/div[3]/a/span")).click();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//span[@id='react-root']/section/main/div/header/section/ul/li[3]/a")).click(); //Takip edilenleri açıyor.
+        //driver.findElement(By.cssSelector(".Y8-fY:nth-child(3) > .-nal3")).click();
+        Thread.sleep(5000);
+
     }
     
     /*public void waitForLoad(WebDriver driver) {

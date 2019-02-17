@@ -1,5 +1,16 @@
 package InstagramTakipEtme;
 
+
+/**
+ *
+ * @author furkan
+ * 
+ * Instagram'da ilk olarak kullanıcı adı ve şifre verilerek giriş yapılması sağlanıyor.
+ * Sonrasında istenilen sayfa adına göre arama yapılıp ilk sonuca tıklanıyor.
+ * O sayfadaki takipçiler ekranına gidip teker teker takip et butonlarına tıklıyor.
+ * 
+ */
+
 import static java.lang.Thread.sleep;
 import org.junit.After;
 import org.junit.Before;
@@ -16,7 +27,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class InstagramTakipEtme {
     
-    String driverPath = "C:\\Users\\furkan\\Desktop\\geckodriver-v0.24.0-win64\\geckodriver.exe";
+    String driverPath = "C:\\Users\\furkan\\Desktop\\geckodriver-v0.24.0-win64\\geckodriver.exe"; //Bilgisayarınızdaki gecko driver path'ini yazmalısınız.
     public WebDriver driver;
     
 
@@ -48,23 +59,23 @@ public class InstagramTakipEtme {
     
     public void kullaniciBilgileriDoldur(){
         
-        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div/div/div/input")).sendKeys("seleniumbotdeneme");
-        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div[2]/div/div/input")).sendKeys("selenium123.");
+        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div/div/div/input")).sendKeys("[UserName]");
+        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div[2]/div/div/input")).sendKeys("[Password]");
         driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/article/div/div/div/form/div[3]/button")).click();
         
     }
     
     public void takipEdilecekBul() throws InterruptedException{
-        driver.findElement(By.xpath(".//span[@id='react-root']/section/nav/div[2]/div/div/div[2]/input")).sendKeys("Beşiktaş");
+        driver.findElement(By.xpath(".//span[@id='react-root']/section/nav/div[2]/div/div/div[2]/input")).sendKeys("Wallhero"); //Gidilecek sayfanın adı
         Thread.sleep(2000);
-        driver.findElement(By.xpath(".//span[@id='react-root']/section/nav/div[2]/div/div/div[2]/div[2]/div[2]/div/a/div/div[2]/span")).click();
+        driver.findElement(By.xpath(".//span[@id='react-root']/section/nav/div[2]/div/div/div[2]/div[2]/div[2]/div/a/div/div[2]/span")).click(); 
         Thread.sleep(5000);
-        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/header/section/ul/li[2]/a")).click();
+        driver.findElement(By.xpath(".//span[@id='react-root']/section/main/div/header/section/ul/li[2]/a")).click();//O sayfanın takipçileri olan ekranı açıyor.
         Thread.sleep(5000);
         
-        for(int i = 1; i<6; i++){
-            driver.findElement(By.xpath("(//button[@type='button'])["+i+"]")).click();
-            Thread.sleep(5000);
+        for(int i = 7; i<60; i++){
+            driver.findElement(By.xpath("(//button[@type='button'])["+i+"]")).click(); //Sırayla takip et butonlarına basıyor. Instagram bir süre sonra engelliyor.
+            Thread.sleep(50);
         }
     }
     
